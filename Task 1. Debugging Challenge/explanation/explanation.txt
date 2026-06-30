@@ -1,0 +1,2 @@
+The wrong code had an issue with the loop condition. It's using <= meaning that meaning that the numbers would have been undefined. If you run that code it would have returned the sum as Nan. 
+If you wnat to make the function more robust, you can just guard it against empty arrays and non-array input. The wrong code would have aslo returned Nan if you added something like [] , so you can just valiadate that every element in the array is a number. 

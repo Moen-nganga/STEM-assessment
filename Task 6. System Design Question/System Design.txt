@@ -1,0 +1,41 @@
+CLIENT LAYER
+==============
+
+I'd build a single app that handles everything rather than building mutitple apps with different features. The
+app would have a local cache so that lessons, progress, and quiz answers wouild be 
+usable offline and they would sync up when a connection returns. 
+
+SERVICE LAYER
+===============
+
+Since blockly, python, and robotics are structurally the same problem, i'd use 
+a content service which would handle the lesson delivery.
+
+DATA LAYER
+=============
+
+Then for the database i would just use one central database as the source of truth, and this 
+would be the client's local cache. 
+
+SCALABILITY
+=============
+
+Each servive can pretty much scale on it's own though the AI tutor service would probably need
+it's own scaling story cause of the rate limits and the cost per call. 
+
+SIMPLICITY
+===========
+
+It's going to be using Blockly, python and Robotics but they're all going to be served by one content service
+so there's no need for making the same "serve lesson" 3 times 
+
+PRACTICALITY
+===============
+
+Offline learning is possible cause it all runs on local cache. 
+
+CLEAR THINKING
+================
+
+The dashboard doesn't own any data, it just reads from the content and 
+AI tutor records, so the progress records can't read out of sync. 

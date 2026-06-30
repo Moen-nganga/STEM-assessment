@@ -1,0 +1,161 @@
+
+
+TASK 1 — DEBUGGING CHALLENGE
+
+
+AI PROMPT USED:
+Chech out and analyse the function below and suggest on ways that i can make it more robust.
+
+AI-GENERATED OUTPUT:
+The AI provided a corrected version of the function with an added guard 
+clause that throws an error for empty or non-array input,
+and explained the off-by-one error as a common mistake from
+thinking "go up to the last index" instead of remembering that .length is a
+count, not the last valid index.
+
+CHANGES I MADE:
+I made changes to the code to make sure that the function would not return sum as NaN.
+
+WHY:
+There was a bgu in the code and the code that i got from claude only made te funtion more robust 
+cause i hadn't prompted it to fix the bug. So i fixed them myself.
+
+
+
+TASK 2 — SAFARISTEM REACT MINI PROJECT
+===========================================================
+
+AI PROMPT USED:
+I want to build an interactive React lesson on Traffic
+Lights for kids aged 7-10, with the listed requirements, suggested features, and
+deliverables. (attached a screenshot)
+
+AI-GENERATED OUTPUT:
+A single-file React component (TrafficLightLesson.jsx) implementing a five-
+stage lesson flow (intro, learn, activity, quiz, success) with an animated
+SVG traffic light, a progress bar, an interactive scenario activity, a three-
+question quiz with scoring, a rotating fun-facts box, and a success/badge
+screen. The AI also generated an accompanying design-explanation document
+covering the UI, accessibility, and performance choices behind the build, and
+flagged that it could not deploy the project live or test it on an actual
+Android device, since it had no outbound network access in that environment.
+
+CHANGES I MADE:
+I set up the actual Vite project locally (since the AI could only hand me the
+component file, not a live project), wired TrafficLightLesson.jsx into
+App.jsx so it would actually render instead of the default Vite starter page,
+and ran/tested it myself in the browser. I also edited the design explanation
+document cause LLM's can sometimes not sound like something that a kid could
+easily understand. I also reworded the quiz and set some questions
+myself that the kids would be able to answer with ease.
+
+WHY:
+The AI could write the code and explain the reasoning, but it couldn't run a
+dev server, install dependencies, or push anything live on my machine so that's why
+i handled that part on my own. I trimmed the design explanation so it described
+only what I actually built and tested rather than features or behaviours I
+hadn't verified myself, and reworded parts of it so the explanation reflected
+my own understanding of the project rather than reading like AI-generated
+prose.
+
+
+
+TASK 3 — PEDAGOGY & CONTENT DESIGN
+===========================================================
+
+AI PROMPT USED:
+Check out this Task. (Attached screenshot). I'll be choosing Science as a topic and i'll be teaching kids
+about seeds and what they need for the to grow. 
+
+AI-GENERATED OUTPUT:
+A lesson plan using two watered/sunlit vs. dry/dark seedlings as the opening
+hands-on comparison, a learning objective for parents, a moment where the
+teacher introduces the word "needs" only after the children describe the
+difference themselves, a check-for-understanding question, one key
+instruction given in both English and Kiswahili, and a written rationale
+explaining the sequencing. The AI also flagged that the exact CBC
+strand/sub-strand wording it used should be checked against the real
+Curriculum Design document, since it wasn't fully certain of the precise
+official terminology.
+
+CHANGES I MADE:
+I changed the opening experience from seedlings to seeds (one watered and in
+sunlight, one dry and in the dark), changed the learning objective to also
+mention what plants produce when they mature, reworded the "introducing the
+key term" section to have the teacher congratulate the children before
+introducing the word "needs," reworded the "check for understanding" question
+and the English/Kiswahili instruction to refer to "seeds" instead of
+"plants," and wrote the "Why i planned the lesson that way" section in my own words while keeping the
+same four-part structure (comparison before vocabulary, child's own
+description first, the question as a clarification tool, and the bilingual
+instruction targeting the observation moment).
+
+WHY:
+I switched to seeds because I felt it gave a clearer before/after demonstration
+for this age group and showing seeds rather than already grown seedlings makes
+the link between "what a plant needs" and "what happens if it doesn't get
+those needs" more concrete, since the difference in outcome is more visibly
+tied to neglect over time. I added the "what plants produce when mature" line
+to the objective so the lesson also touches on the idea that meeting a
+plant's needs leads to a visible outcome (flowers/fruit), not just survival.
+I reworded the rationale into my own words because the original phrasing,
+while accurate, didn't fully match how I would explain my own reasoning to a
+marker, and I wanted the written rationale to clearly be in my own voice.
+
+TASK 4: AI-ASSISTED DEVELOPMENT
+
+This document covers my AI workflow across Task 1 (debugging), Task 2 (React
+mini project), and Task 3 (pedagogy & content design).
+
+TASK 5 — EMBEDDED SYSTEMS CHALLENGE
+
+ 
+AI PROMPT USED:
+I shared the Task 5 brief (write Arduino/ESP32 code for an HC-SR04 ultrasonic
+distance sensor and a piezo buzzer, where the buzzer beeps slowly when far,
+beeps faster as the object gets closer, and becomes continuous when the
+object is extremely close) and asked the AI to write the code while closely considering the requirements
+mentioned. 
+ 
+AI-GENERATED OUTPUT:
+A complete Arduino sketch that reads distance from the HC-SR04 using
+pulseIn() with a timeout (to avoid the program freezing if no echo returns),
+then drives the buzzer in three zones: silent beyond a max range. The explanation also flagged a limitation:
+the beep timing uses blocking delay() calls, so the sensor is only re-read
+once per beep cycle, and suggested switching to millis()-based timing if the
+circuit ever needed to stay responsive to other inputs at the same time.
+ 
+CHANGES I MADE:
+I added some beeping with delays that scales with distance
+ 
+WHY:
+It was included in the assessment though the generated code didn't have a timeout
+that activated the beep. 
+ 
+ 
+TASK 6 — SYSTEM DESIGN QUESTION
+
+AI PROMPT USED:
+Check out my design for this platform i want to make (attached screenshot of my design) 
+How would you imporve it in terms of simplicity. 
+ 
+AI-GENERATED OUTPUT:
+A three-layer architecture: a client layer (a single web/mobile app with a
+local cache and sync queue handling offline support directly on the client,
+rather than as a separate backend service), a service layer (one Content
+service covering Blockly, Python, and Robotics lessons since they share the
+same underlying "serve lesson, validate attempt, record result" pattern, a
+separate AI Tutor service behind an LLM API gateway, and a Dashboard service
+that reads aggregated progress from the other two rather than owning its own
+copy of student data), and a data layer (one central database the client
+syncs against). The AI also provided a structural diagram of the
+architecture and a short written justification tying each design choice back
+to the four evaluation criteria.
+ 
+CHANGES I MADE:
+I implemented it's own design for practicality cause it was better than what i came up with. 
+Also used the AI to draw a better diagram so that it can look more presentable. 
+ 
+WHY:
+My method of practicality did not include any offline tutoring and when the AI suggested that there was a way to run 
+the cache locally so that it can operate offline, i went along with it. 
